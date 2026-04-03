@@ -1,0 +1,15 @@
+{
+  "name": "bao-cao-gk-build",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "count-loc": "node count-loc.mjs",
+    "rebuild": "node count-loc.mjs && node build.mjs"
+  },
+  "dependencies": {
+    "docx": "^9.5.0",
+    "md-to-pdf": "^5.2.4",
+    "pptxgenjs": "^3.12.0"
+  }
+}

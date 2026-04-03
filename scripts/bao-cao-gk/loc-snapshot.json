@@ -1,0 +1,17 @@
+{
+  "measuredAt": "2026-04-03",
+  "method": "Physical LOC (all lines including blanks and comments) via count-loc.mjs",
+  "frontend": {
+    "productionSrc": 2652,
+    "productionFiles": 28,
+    "testSrc": 90,
+    "testFiles": 4
+  },
+  "backend": {
+    "src": 827,
+    "srcFiles": 4,
+    "tests": 291,
+    "testFiles": 2
+  },
+  "total": 3860
+}
