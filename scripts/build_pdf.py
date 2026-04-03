@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Tạo docs/BAO_CAO.pdf từ docs/BAO_CAO.md (báo cáo giữa kỳ).
+"""[Lỗi thời] Từng tạo docs/BAO_CAO.pdf từ docs/BAO_CAO.md — các file đó có thể không còn trong repo.
 
-Khuyến nghị: dùng bộ BaoCao_GK (Word + PDF + PPT) — `cd scripts/bao-cao-gk && npm install && npm run build`.
+Khuyến nghị: `cd scripts/bao-cao-gk && npm install && npm run build` (nguồn: `BaoCao_GK.md` trong cùng thư mục).
 """
 from __future__ import annotations
 

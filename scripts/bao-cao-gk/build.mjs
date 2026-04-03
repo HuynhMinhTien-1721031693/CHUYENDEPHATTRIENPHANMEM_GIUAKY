@@ -8,11 +8,13 @@ import { mdToPdf } from "md-to-pdf";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..", "..");
-const MD_PATH = path.join(ROOT, "docs", "BaoCao_GK.md");
-const CSS_PATH = path.join(ROOT, "docs", "bao-cao-gk-pdf.css");
-const DOCX_PATH = path.join(ROOT, "docs", "BaoCao_GK.docx");
-const PPTX_PATH = path.join(ROOT, "docs", "BaoCao_GK.pptx");
-const PDF_PATH = path.join(ROOT, "docs", "BaoCao_GK.pdf");
+/** Nguồn Markdown + CSS nằm cùng thư mục script; file xuất vào `docs/` (thư mục cục bộ, không bắt buộc commit). */
+const MD_PATH = path.join(__dirname, "BaoCao_GK.md");
+const CSS_PATH = path.join(__dirname, "bao-cao-gk-pdf.css");
+const OUT_DIR = path.join(ROOT, "docs");
+const DOCX_PATH = path.join(OUT_DIR, "BaoCao_GK.docx");
+const PPTX_PATH = path.join(OUT_DIR, "BaoCao_GK.pptx");
+const PDF_PATH = path.join(OUT_DIR, "BaoCao_GK.pdf");
 
 /** Đọc kết quả `node count-loc.mjs` — nếu thiếu file thì trả về 0 (chạy count-loc trước khi build). */
 function loadLocSnapshot() {
@@ -1010,6 +1012,7 @@ async function buildPdf() {
 }
 
 async function main() {
+  await fs.mkdir(OUT_DIR, { recursive: true });
   const md = await fs.readFile(MD_PATH, "utf8");
   if (process.env.SKIP_DOCX === "1") {
     console.warn("SKIP_DOCX=1 — bỏ qua ghi BaoCao_GK.docx (đóng Word nếu cần xuất DOCX).");

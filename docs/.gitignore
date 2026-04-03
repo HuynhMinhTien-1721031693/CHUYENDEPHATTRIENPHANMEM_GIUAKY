@@ -1,0 +1,4 @@
+# Thư mục dùng để xuất Word / PDF / PowerPoint cục bộ (npm run build).
+# Không đưa báo cáo đã xuất lên Git — chỉ giữ file này để có thư mục `docs/` trong repo.
+*
+!.gitignore

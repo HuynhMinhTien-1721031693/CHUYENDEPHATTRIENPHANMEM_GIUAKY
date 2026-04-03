@@ -140,7 +140,7 @@ sequenceDiagram
 
 **LOC (Lines of Code):** đo bằng script `scripts/bao-cao-gk/count-loc.mjs` — đếm **dòng vật lý** (có tính dòng trống và comment) trong `frontend/src` (tách file `*.test.*`) và `backend/src`, `backend/tests`. Kết quả mới nhất lưu tại `scripts/bao-cao-gk/loc-snapshot.json` (cập nhật mỗi lần chạy `node count-loc.mjs`). Số liệu này được đưa vào slide PowerPoint (bảng + biểu đồ tròn).
 
-**Story point:** ước lượng theo thang **Fibonacci** cho từng nhóm epic (giao diện + SPA Task + live hub, WebRTC, auth/quản trị, backend signaling, test & báo cáo). Story point phản ánh **độ phức tạp và effort tương đối**, **không** suy ra tự động từ LOC — dùng khi mô tả quy mô công việc hoặc lập kế hoạch sprint (xem bảng trong `BaoCao_GK.pptx`).
+**Story point:** ước lượng theo thang **Fibonacci** cho từng nhóm epic (giao diện + SPA Task + live hub, WebRTC, auth/quản trị, backend signaling, test & báo cáo). Story point phản ánh **độ phức tạp và effort tương đối**, **không** suy ra tự động từ LOC — dùng khi mô tả quy mô công việc hoặc lập kế hoạch sprint (xem bảng trong file PowerPoint xuất bởi `npm run build`, mặc định `docs/BaoCao_GK.pptx` cục bộ).
 
 ---
 
