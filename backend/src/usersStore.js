@@ -52,31 +52,53 @@ function writeDb(db) {
 }
 
 /**
+ * Tạo hoặc **đồng bộ lại** tài khoản seed: nếu email đã tồn tại (vd. đã đăng ký web trước đó)
+ * nhưng sai `role` / mật khẩu / `provider`, cập nhật cho khớp `.env` — để đăng nhập quản trị được.
+ *
  * @param {{ sysmanagerEmail?: string, sysmanagerPassword?: string, adminEmail?: string, adminPassword?: string }} opts
  */
 function ensureSeed(opts) {
   const db = readDb();
   let changed = false;
 
-  const addIfMissing = (email, password, role) => {
+  const upsertSeedUser = (email, password, role) => {
     if (!email || !password) return;
     const norm = email.trim().toLowerCase();
-    if (db.users.some((u) => u.email === norm)) return;
-    db.users.push({
-      id: randomUUID(),
-      email: norm,
-      name: role === "sysmanager" ? "Quản lý hệ thống" : "Admin phòng live",
-      passwordHash: bcrypt.hashSync(password, 10),
+    const idx = db.users.findIndex((u) => u.email === norm);
+    const displayName = role === "sysmanager" ? "Quản lý hệ thống" : "Admin phòng live";
+
+    if (idx === -1) {
+      db.users.push({
+        id: randomUUID(),
+        email: norm,
+        name: displayName,
+        passwordHash: bcrypt.hashSync(password, 10),
+        role,
+        provider: "local",
+        providerId: null,
+        createdAt: new Date().toISOString(),
+      });
+      changed = true;
+      return;
+    }
+
+    const u = db.users[idx];
+    const passwordOk = Boolean(u.passwordHash && bcrypt.compareSync(password, u.passwordHash));
+    if (u.role === role && passwordOk && u.provider === "local") return;
+
+    db.users[idx] = {
+      ...u,
       role,
+      name: displayName,
+      passwordHash: bcrypt.hashSync(password, 10),
       provider: "local",
       providerId: null,
-      createdAt: new Date().toISOString(),
-    });
+    };
     changed = true;
   };
 
-  addIfMissing(opts.sysmanagerEmail, opts.sysmanagerPassword, "sysmanager");
-  addIfMissing(opts.adminEmail, opts.adminPassword, "admin");
+  upsertSeedUser(opts.sysmanagerEmail, opts.sysmanagerPassword, "sysmanager");
+  upsertSeedUser(opts.adminEmail, opts.adminPassword, "admin");
 
   if (changed) writeDb(db);
 }

@@ -1,5 +1,6 @@
 const http = require("http");
 const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 const express = require("express");
 const cors = require("cors");
 const WebSocket = require("ws");
@@ -10,12 +11,23 @@ const { setupAuthAndRoutes } = require("./authHttp");
 const PORT = process.env.PORT || 3001;
 const { version } = require(path.join(__dirname, "..", "package.json"));
 
-users.ensureSeed({
+const seedOpts = {
   sysmanagerEmail: process.env.SEED_SYSMANAGER_EMAIL,
   sysmanagerPassword: process.env.SEED_SYSMANAGER_PASSWORD,
   adminEmail: process.env.SEED_ADMIN_EMAIL,
   adminPassword: process.env.SEED_ADMIN_PASSWORD,
-});
+};
+users.ensureSeed(seedOpts);
+
+if (
+  process.env.NODE_ENV !== "test" &&
+  require.main === module &&
+  (!seedOpts.sysmanagerEmail || !seedOpts.adminEmail)
+) {
+  console.warn(
+    "[auth] Thiếu SEED_SYSMANAGER_* hoặc SEED_ADMIN_* trong backend/.env — tạo file .env từ .env.example rồi khởi động lại backend."
+  );
+}
 
 const live = createLiveRooms({ maxViewersPerRoom: 20 });
 

@@ -8,3 +8,6 @@ coverage/
 .DS_Store
 *.log
 .vscode/
+# Word lock file khi đang mở .docx
+~$*.docx
+docs/~$*.docx

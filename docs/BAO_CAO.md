@@ -19,7 +19,7 @@ pdf_options:
 | MSSV | 1721031693 |
 | Môn học | Chuyên đề phát triển phần mềm |
 | Repository mã nguồn | https://github.com/HuynhMinhTien-1721031693/CHUYENDEPHATTRIENPHANMEM_GIUAKY |
-| Video demo (YouTube) | *(dán link sau khi upload — bắt buộc theo yêu cầu nộp bài)* |
+| Video demo (YouTube) | https://youtu.be/3nTMk1xiUGs |
 
 ---
 
@@ -195,10 +195,10 @@ Form **Đăng ký** chỉ tạo tài khoản **user**; **Quản lý hệ thống
 
 1. Trong `backend`, tạo **`.env`** từ **`.env.example`**.  
 2. Đặt `SEED_SYSMANAGER_*` và `SEED_ADMIN_*`.  
-3. Chạy backend; nếu email chưa có trong `backend/data/app-data.json`, hệ thống tạo user đúng vai trò.  
-4. **Đăng nhập** (không đăng ký) tại trang **Đăng nhập** bằng email/mật khẩu đã cấu hình.
+3. Chạy backend; với mỗi email trong `.env` (`SEED_*`), hệ thống **tạo mới** hoặc **đồng bộ** user trong `backend/data/app-data.json` (đúng vai trò + mật khẩu local) — kể cả khi trước đó đã **đăng ký web** trùng email.  
+4. **Đăng nhập** (không đăng ký) tại trang **Đăng nhập** bằng email/mật khẩu trong `.env`.
 
-*Nếu user đã tồn tại, seed không đổi mật khẩu — dùng mật khẩu cũ hoặc chỉnh/xóa bản ghi trong `app-data.json` khi cần demo lại.*
+*Muốn giữ mật khẩu cũ cho email seed: đổi `SEED_*_PASSWORD` trong `.env` cho khớp, hoặc chỉnh tay trong `app-data.json` (bcrypt).*
 
 ### 10.4. Tài khoản mẫu (theo `.env.example`)
 

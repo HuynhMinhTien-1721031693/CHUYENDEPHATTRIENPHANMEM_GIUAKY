@@ -971,7 +971,7 @@ function buildPptx() {
       "https://github.com/HuynhMinhTien-1721031693/CHUYENDEPHATTRIENPHANMEM_GIUAKY",
       "",
       "Video demo (YouTube)",
-      "(Điền URL sau khi upload — bắt buộc nếu đề bài yêu cầu)",
+      "https://youtu.be/3nTMk1xiUGs",
       "",
       "Báo cáo chi tiết",
       "docs/BaoCao_GK.pdf · docs/BaoCao_GK.docx",

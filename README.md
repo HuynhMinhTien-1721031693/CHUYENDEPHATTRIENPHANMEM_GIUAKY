@@ -81,7 +81,7 @@ npm run build
 
 **Cách cũ (chỉ PDF từ `BAO_CAO.md` + ReportLab):** `pip install -r scripts/requirements.txt` rồi `python scripts/build_pdf.py` — khuyến nghị dùng bộ `BaoCao_GK.*` ở trên.
 
-Nhớ điền **họ tên, MSSV, link YouTube** trong `docs/BaoCao_GK.md` (và/hoặc `docs/BAO_CAO.md`) trước khi nộp.
+Link demo YouTube: **https://youtu.be/3nTMk1xiUGs** (đã ghi trong `docs/BaoCao_GK.md` và bộ xuất báo cáo).
 
 ## Đẩy code lên GitHub
 
@@ -129,6 +129,8 @@ cd backend
 npm install
 npm run dev
 ```
+
+**Đăng nhập Quản lý hệ thống / Admin phòng live:** trong thư mục `backend`, tạo file **`.env`** (copy từ `.env.example`), điền `SESSION_SECRET` và bốn biến `SEED_*`. Khi chạy `npm run dev`, Node **tự đọc `.env`** (package `dotenv`). Mỗi lần backend khởi động, hai email seed được **tạo hoặc đồng bộ** vào `backend/data/app-data.json`. Nếu console báo thiếu `SEED_*`, kiểm tra tên file đúng là `backend/.env` (không phải chỉ `.env.example`).
 
 **Cửa sổ 2 — Frontend (port 5173):**
 

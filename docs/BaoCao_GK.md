@@ -10,7 +10,7 @@
 | MSSV | 1721031693 |
 | Môn học | Chuyên đề phát triển phần mềm |
 | Repository mã nguồn | https://github.com/HuynhMinhTien-1721031693/CHUYENDEPHATTRIENPHANMEM_GIUAKY |
-| Video demo (YouTube) | *(dán link sau khi upload — bắt buộc theo yêu cầu nộp bài)* |
+| Video demo (YouTube) | https://youtu.be/3nTMk1xiUGs |
 
 ---
 
@@ -263,10 +263,10 @@ npm test
 
 1. Trong thư mục **`backend`**, sao chép **`.env.example`** thành **`.env`**.
 2. Điền **`SEED_SYSMANAGER_EMAIL`**, **`SEED_SYSMANAGER_PASSWORD`**, **`SEED_ADMIN_EMAIL`**, **`SEED_ADMIN_PASSWORD`** (email/mật khẩu dùng cho hai vai trò quản trị).
-3. Chạy backend (`npm run dev` hoặc `npm start`). Nếu **chưa có** user trùng email trong **`backend/data/app-data.json`**, hệ thống **tự tạo** hai tài khoản với đúng vai trò tương ứng.
+3. Chạy backend (`npm run dev` hoặc `npm start`). Mỗi lần khởi động, hai email `SEED_*` trong **`.env`** được **tạo mới hoặc đồng bộ** trong `backend/data/app-data.json` (đúng vai trò **Quản lý hệ thống** / **Admin phòng live** và mật khẩu local), kể cả khi trước đó đã đăng ký web trùng email.
 4. Mở trang **Đăng nhập** trên web và đăng nhập bằng **email + mật khẩu** đã khai báo trong `.env` — đây là **đăng nhập**, không phải **đăng ký** tạo tài khoản quản trị.
 
-*Nếu hai email đã tồn tại từ lần chạy trước, hệ thống **không ghi đè** mật khẩu — dùng mật khẩu cũ hoặc chỉnh/xóa bản ghi trong `app-data.json` khi cần demo lại.*
+*Nếu cần mật khẩu khác với `.env`, chỉnh `SEED_*_PASSWORD` rồi khởi động lại backend, hoặc sửa tay `app-data.json`.*
 
 ### IX.5. Bảng tài khoản và mật khẩu mẫu (theo `.env.example`)
 
@@ -288,4 +288,4 @@ npm test
 | Môn học | Chuyên đề phát triển phần mềm |
 | Đề tài | Web Live Stream (WebRTC + Signaling WebSocket) |
 | Link GitHub | https://github.com/HuynhMinhTien-1721031693/CHUYENDEPHATTRIENPHANMEM_GIUAKY |
-| Link video YouTube | *(dán sau khi upload — theo yêu cầu nộp bài)* |
+| Link video YouTube | https://youtu.be/3nTMk1xiUGs |
